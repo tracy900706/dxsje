@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系我们 - 中国大学生就业网</title>
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/colors.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <style>
+    :root {
+      --primary: #e41f1f;
+      --primary-dark: #c41a1a;
+      --primary-light: #ff2424;
+    }
+    
+    /* 导航栏当前页面样式 */
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 2px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+    
+    /* 联系方式卡片样式 */
+    .contact-card {
+      border: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* 图标颜色 */
+    .contact-icon {
+      color: var(--primary);
+    }
+    
+    /* 按钮样式 */
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* 表单输入框焦点样式 */
+    .form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(228, 31, 31, 0.1);
+    }
+    
+    /* 标题装饰线 */
+    .section-title::after {
+      background-color: var(--primary);
+    }
+    
+    /* 联系信息背景 */
+    .contact-info {
+      background: linear-gradient(45deg, var(--primary), var(--primary-light));
+      color: white;
+    }
+    
+    /* 地图容器样式 */
+    .map-container {
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+    }
+
+    /* 联系方式图标 */
+    .contact-icon {
+      color: var(--primary);
+    }
+
+    /* 提交按钮 */
+    .submit-btn {
+      background-color: var(--primary);
+    }
+
+    .submit-btn:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* 地区代表卡片悬停效果 */
+    .representative-card:hover {
+      border-color: var(--primary);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- 导航栏 -->
+  <div class="nav-container bg-white border-b border-gray-200">
+    <div class="nav-content w-full">
+      <div class="container mx-auto max-w-7xl px-4">
+        <nav class="py-4 flex justify-between items-center">
+          <!-- 网站Logo -->
+          <div class="logo-container flex items-center flex-shrink-0 mr-6">
+            <a href="home.html" class="flex items-center">
+              <img src="../assets/images/logo.png" alt="中国大学生就业网Logo" class="h-8 w-auto mr-3">
+              <span class="text-lg font-medium tracking-wide whitespace-nowrap text-gray-900" style="font-family: 'Microsoft YaHei', sans-serif;">中国大学生就业网</span>
+            </a>
+          </div>
+          
+          <!-- 主导航菜单 -->
+          <div class="flex items-center justify-center flex-grow">
+            <div class="flex items-center space-x-6">
+              <a href="home.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                首页
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="news.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                新闻中心
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="policy.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                政策指引
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="jobs.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                就业信息
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="service.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                就业指导
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="cooperation.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                战略合作
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="about.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                地方频道
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="contact.html" class="nav-link active text-primary font-medium">联系我们</a>
+            </div>
+          </div>
+          
+          <!-- 右侧工具区 -->
+          <div class="flex items-center space-x-6">
+            <!-- 搜索按钮 -->
+            <button type="button" class="text-gray-700 hover:text-primary transition-colors" aria-label="搜索" title="搜索">
+              <i class="fas fa-search text-lg"></i>
+            </button>
+            
+            <!-- 用户菜单 -->
+            <div class="user-menu relative">
+              <button type="button" class="flex items-center space-x-1 text-gray-700 hover:text-primary focus:outline-none" id="userMenuButton" aria-label="用户菜单" title="用户菜单">
+                <span class="text-sm">我的账户</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              
+              <!-- 用户下拉菜单 -->
+              <div class="user-dropdown absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden" id="userDropdown">
+                <a href="javascript:void(0);" onclick="return false;" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" style="cursor: default;">
+                  <i class="fas fa-user mr-2"></i>个人中心
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bookmark mr-2"></i>我的收藏
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bell mr-2"></i>消息通知
+                </a>
+                <div class="border-t border-gray-100 my-1"></div>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-sign-out-alt mr-2"></i>退出登录
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主要内容区 -->
+  <div class="content-wrapper container mx-auto px-4 py-8">
+    <!-- 页面标题 -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900">联系我们</h1>
+      <p class="mt-2 text-gray-600">欢迎通过以下方式与我们联系</p>
+    </div>
+
+    <!-- 公司联系信息地图嵌入 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2">
+        <!-- 左侧地图 -->
+        <div class="h-[400px] relative">
+          <img src="https://images.unsplash.com/photo-1582192730841-2a682d7375f9?w=800&auto=format&fit=crop&q=60" alt="公司位置" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 flex items-center justify-center">
+            <div class="text-center text-white">
+              <h2 class="text-2xl font-bold mb-2">总部位置</h2>
+              <p class="text-lg">北京市海淀区中关村大街1号</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 右侧联系信息 -->
+        <div class="p-8">
+          <h2 class="text-2xl font-bold mb-6">联系方式</h2>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold mb-1">公司地址</h3>
+                <p class="text-gray-600">北京市海淀区中关村大街1号科技大厦12层</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-phone-alt text-primary text-xl"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold mb-1">联系电话</h3>
+                <p class="text-gray-600">400-123-4567（工作日 9:00-18:00）</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-envelope text-primary text-xl"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold mb-1">电子邮箱</h3>
+                <p class="text-gray-600">contact@jobinfo.com</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-comments text-primary text-xl"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold mb-1">在线客服</h3>
+                <p class="text-gray-600">工作日在线时间：9:00-18:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 各区代理联系方式 -->
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-2xl font-bold mb-6">各区代理联系方式</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 华北地区 -->
+        <div class="bg-gray-50 rounded-lg p-6">
+          <div class="flex items-center mb-4">
+            <img src="https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?w=800&auto=format&fit=crop&q=60" alt="华北地区" class="w-16 h-16 rounded-lg object-cover mr-4">
+            <div>
+              <h3 class="text-lg font-bold">华北地区</h3>
+              <p class="text-sm text-gray-600">北京、天津、河北、山西、内蒙古</p>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-user-tie w-5 text-primary"></i>
+              <span class="ml-2">负责人：张经理</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-phone w-5 text-primary"></i>
+              <span class="ml-2">电话：010-12345678</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-envelope w-5 text-primary"></i>
+              <span class="ml-2">邮箱：north@jobinfo.com</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- 华东地区 -->
+        <div class="bg-gray-50 rounded-lg p-6">
+          <div class="flex items-center mb-4">
+            <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=800&auto=format&fit=crop&q=60" alt="华东地区" class="w-16 h-16 rounded-lg object-cover mr-4">
+            <div>
+              <h3 class="text-lg font-bold">华东地区</h3>
+              <p class="text-sm text-gray-600">上海、江苏、浙江、安徽、福建、江西、山东</p>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-user-tie w-5 text-primary"></i>
+              <span class="ml-2">负责人：李经理</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-phone w-5 text-primary"></i>
+              <span class="ml-2">电话：021-87654321</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-envelope w-5 text-primary"></i>
+              <span class="ml-2">邮箱：east@jobinfo.com</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- 华南地区 -->
+        <div class="bg-gray-50 rounded-lg p-6">
+          <div class="flex items-center mb-4">
+            <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=800&auto=format&fit=crop&q=60" alt="华南地区" class="w-16 h-16 rounded-lg object-cover mr-4">
+            <div>
+              <h3 class="text-lg font-bold">华南地区</h3>
+              <p class="text-sm text-gray-600">广东、广西、海南</p>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-user-tie w-5 text-primary"></i>
+              <span class="ml-2">负责人：王经理</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-phone w-5 text-primary"></i>
+              <span class="ml-2">电话：020-98765432</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-envelope w-5 text-primary"></i>
+              <span class="ml-2">邮箱：south@jobinfo.com</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- 华中地区 -->
+        <div class="bg-gray-50 rounded-lg p-6">
+          <div class="flex items-center mb-4">
+            <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&auto=format&fit=crop&q=60" alt="华中地区" class="w-16 h-16 rounded-lg object-cover mr-4">
+            <div>
+              <h3 class="text-lg font-bold">华中地区</h3>
+              <p class="text-sm text-gray-600">河南、湖北、湖南</p>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-user-tie w-5 text-primary"></i>
+              <span class="ml-2">负责人：赵经理</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-phone w-5 text-primary"></i>
+              <span class="ml-2">电话：027-34567890</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-envelope w-5 text-primary"></i>
+              <span class="ml-2">邮箱：central@jobinfo.com</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- 西南地区 -->
+        <div class="bg-gray-50 rounded-lg p-6">
+          <div class="flex items-center mb-4">
+            <img src="https://images.unsplash.com/photo-1522623349500-de37a56ea2a5?w=800&auto=format&fit=crop&q=60" alt="西南地区" class="w-16 h-16 rounded-lg object-cover mr-4">
+            <div>
+              <h3 class="text-lg font-bold">西南地区</h3>
+              <p class="text-sm text-gray-600">重庆、四川、贵州、云南、西藏</p>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-user-tie w-5 text-primary"></i>
+              <span class="ml-2">负责人：陈经理</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-phone w-5 text-primary"></i>
+              <span class="ml-2">电话：023-45678901</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-envelope w-5 text-primary"></i>
+              <span class="ml-2">邮箱：southwest@jobinfo.com</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- 西北地区 -->
+        <div class="bg-gray-50 rounded-lg p-6">
+          <div class="flex items-center mb-4">
+            <img src="https://images.unsplash.com/photo-1527095655060-4026c4af2b25?w=800&auto=format&fit=crop&q=60" alt="西北地区" class="w-16 h-16 rounded-lg object-cover mr-4">
+            <div>
+              <h3 class="text-lg font-bold">西北地区</h3>
+              <p class="text-sm text-gray-600">陕西、甘肃、青海、宁夏、新疆</p>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-user-tie w-5 text-primary"></i>
+              <span class="ml-2">负责人：刘经理</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-phone w-5 text-primary"></i>
+              <span class="ml-2">电话：029-56789012</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-envelope w-5 text-primary"></i>
+              <span class="ml-2">邮箱：northwest@jobinfo.com</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- 东北地区 -->
+        <div class="bg-gray-50 rounded-lg p-6">
+          <div class="flex items-center mb-4">
+            <img src="https://images.unsplash.com/photo-1516490981167-dc990a242afe?w=800&auto=format&fit=crop&q=60" alt="东北地区" class="w-16 h-16 rounded-lg object-cover mr-4">
+            <div>
+              <h3 class="text-lg font-bold">东北地区</h3>
+              <p class="text-sm text-gray-600">辽宁、吉林、黑龙江</p>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-user-tie w-5 text-primary"></i>
+              <span class="ml-2">负责人：孙经理</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-phone w-5 text-primary"></i>
+              <span class="ml-2">电话：024-67890123</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-envelope w-5 text-primary"></i>
+              <span class="ml-2">邮箱：northeast@jobinfo.com</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- 港澳台地区 -->
+        <div class="bg-gray-50 rounded-lg p-6">
+          <div class="flex items-center mb-4">
+            <img src="https://images.unsplash.com/photo-1576788369575-4ab045b9287e?w=800&auto=format&fit=crop&q=60" alt="港澳台地区" class="w-16 h-16 rounded-lg object-cover mr-4">
+            <div>
+              <h3 class="text-lg font-bold">港澳台地区</h3>
+              <p class="text-sm text-gray-600">香港、澳门、台湾</p>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-user-tie w-5 text-primary"></i>
+              <span class="ml-2">负责人：黄经理</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-phone w-5 text-primary"></i>
+              <span class="ml-2">电话：+852-78901234</span>
+            </p>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-envelope w-5 text-primary"></i>
+              <span class="ml-2">邮箱：hmt@jobinfo.com</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // 页面加载完成后，通知父框架已准备好接收主题变更
+    window.addEventListener('load', function() {
+      // 检查是否有保存的主题
+      const savedTheme = localStorage.getItem('selectedTheme');
+      if (savedTheme) {
+        applyTheme(savedTheme);
+      }
+
+      // 通知父窗口此页面已准备好
+      if (window.parent) {
+        window.parent.postMessage({ type: 'frameReady', frameId: 'contact' }, '*');
+      }
+    });
+
+    // 监听来自父窗口的消息
+    window.addEventListener('message', function(event) {
+      // 检查消息类型是否为主题变更
+      if (event.data.type === 'themeChange') {
+        applyTheme(event.data.theme);
+      }
+    });
+
+    // 应用主题的函数
+    function applyTheme(theme) {
+      // 重置所有主题相关的CSS变量
+      document.documentElement.style.removeProperty('--primary');
+      document.documentElement.style.removeProperty('--primary-dark');
+      document.documentElement.style.removeProperty('--primary-light');
+      
+      // 根据选择的主题设置CSS变量
+      switch(theme) {
+        case 'blue':
+          document.documentElement.style.setProperty('--primary', '#3b82f6');
+          document.documentElement.style.setProperty('--primary-dark', '#2563eb');
+          document.documentElement.style.setProperty('--primary-light', '#93c5fd');
+          break;
+        case 'red':
+          document.documentElement.style.setProperty('--primary', '#ef4444');
+          document.documentElement.style.setProperty('--primary-dark', '#dc2626');
+          document.documentElement.style.setProperty('--primary-light', '#fca5a5');
+          break;
+        case 'orange':
+          document.documentElement.style.setProperty('--primary', '#f97316');
+          document.documentElement.style.setProperty('--primary-dark', '#ea580c');
+          document.documentElement.style.setProperty('--primary-light', '#fdba74');
+          break;
+        case 'teal':
+          document.documentElement.style.setProperty('--primary', '#14b8a6');
+          document.documentElement.style.setProperty('--primary-dark', '#0d9488');
+          document.documentElement.style.setProperty('--primary-light', '#5eead4');
+          break;
+        default:
+          document.documentElement.style.setProperty('--primary', '#3b82f6');
+          document.documentElement.style.setProperty('--primary-dark', '#2563eb');
+          document.documentElement.style.setProperty('--primary-light', '#93c5fd');
+      }
+    }
+  </script>
+
+  <!-- 页脚组件 -->
+  <footer class="bg-white text-gray-800 py-12 border-t">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-12 gap-8">
+            <!-- 左侧导航菜单 -->
+            <div class="col-span-6 grid grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">关于我们</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">平台介绍</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">联系方式</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">服务协议</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">就业服务</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">校园招聘</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">求职指导</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">政策解读</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">新闻资讯</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">行业动态</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">热点关注</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">活动公告</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">帮助中心</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">常见问题</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">用户指南</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">意见反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 中间联系方式 -->
+            <div class="col-span-2">
+                <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-600 mt-1 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">北京市海淀区中关村大街1号</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone-alt text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">400-123-4567</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">contact@jobinfo.com</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-clock text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">工作日 9:00-18:00</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 右侧二维码 -->
+            <div class="col-span-4">
+                <h3 class="text-lg font-bold mb-4">关注我们</h3>
+                <div class="grid grid-cols-5 gap-3">
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/wechat-qr.png" alt="微信二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">微信公众号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/douyin-qr.png" alt="抖音二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">抖音号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/xiaohongshu-qr.png" alt="小红书二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">小红书号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/kuaishou-qr.png" alt="快手二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">快手号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/weibo-qr.png" alt="微博二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">微博</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 版权信息 -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <div class="text-center text-gray-600 text-sm">
+                <p>© 2024 大学生就业信息平台 All Rights Reserved.</p>
+                <p class="mt-2">京ICP备12345678号-1 | 京公网安备110108020300088号</p>
+            </div>
+        </div>
+    </div>
+  </footer>
+</body>
+</html> 

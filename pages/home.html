@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页 - 大学生就业信息平台</title>
+  <!-- Tailwind CSS 引用（实际项目中可使用CDN） -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- 自定义CSS -->
+  <link rel="stylesheet" href="../css/custom.css">
+  <style>
+    /* 首页特定样式 */
+    body {
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    .content-wrapper {
+      padding-bottom: 2rem; /* 增加底部内边距，确保内容不被页脚遮挡 */
+    }
+    
+    .banner-section {
+      position: relative;
+      height: 100vh;
+      background-color: #e41f1f;
+      background-image: url('../assets/images/banner/3d-briefcase.jpg');
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+
+    /* 移除原有的背景图案 */
+    .banner-section::before {
+      display: none;
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 10;
+      padding-top: 280px;
+      padding-left: 120px;
+      max-width: 800px;
+    }
+    
+    .banner-title {
+      font-size: 3.5rem;
+      font-weight: 600;
+      margin-bottom: 1.75rem;
+      color: white;
+      line-height: 1.3;
+      letter-spacing: 0.2em;
+      font-family: "PingFang SC", "Microsoft YaHei", "SF Pro SC", "SF Pro Text", "Helvetica Neue", system-ui, -apple-system, sans-serif;
+    }
+    
+    .banner-description {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+      letter-spacing: 0.025em;
+      max-width: 600px;
+      font-family: "PingFang SC", "Microsoft YaHei", "SF Pro SC", "SF Pro Text", "Helvetica Neue", system-ui, -apple-system, sans-serif;
+      font-weight: 300;
+    }
+
+    .explore-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      color: white;
+      font-size: 0.875rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 2rem;
+      transition: all 0.3s ease;
+      font-family: "PingFang SC", "Microsoft YaHei", "SF Pro SC", "SF Pro Text", "Helvetica Neue", system-ui, -apple-system, sans-serif;
+    }
+
+    .explore-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: white;
+    }
+
+    .explore-button i {
+      margin-left: 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    /* 移除3D设计元素相关样式 */
+    .design-elements,
+    .connection-lines,
+    .connection-path,
+    .design-element {
+      display: none;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background-color: #e41f1f;
+    }
+    
+    .news-card {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .news-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .policy-card {
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+    
+    .policy-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      height: 250px;
+    }
+    
+    .service-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover .service-bg {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+    
+    .service-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      color: white;
+    }
+
+    /* 恢复原有的政策卡片样式 */
+    .policy-card {
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    .policy-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    /* 恢复原有的图标颜色 */
+    .policy-card:nth-child(1) .policy-icon {
+      color: #e41f1f;
+    }
+
+    .policy-card:nth-child(2) .policy-icon {
+      color: #3b82f6;
+    }
+
+    .policy-card:nth-child(3) .policy-icon {
+      color: #10b981;
+    }
+
+    .policy-card:nth-child(4) .policy-icon {
+      color: #8b5cf6;
+    }
+
+    /* 恢复原有的箭头图标颜色 */
+    .policy-card:nth-child(1) i.fas.fa-angle-right {
+      color: #e41f1f;
+    }
+
+    .policy-card:nth-child(2) i.fas.fa-angle-right {
+      color: #3b82f6;
+    }
+
+    .policy-card:nth-child(3) i.fas.fa-angle-right {
+      color: #10b981;
+    }
+
+    .policy-card:nth-child(4) i.fas.fa-angle-right {
+      color: #8b5cf6;
+    }
+
+    /* 恢复原有的链接颜色 */
+    .policy-card:nth-child(1) a {
+      color: #e41f1f;
+    }
+
+    .policy-card:nth-child(2) a {
+      color: #3b82f6;
+    }
+
+    .policy-card:nth-child(3) a {
+      color: #10b981;
+    }
+
+    .policy-card:nth-child(4) a {
+      color: #8b5cf6;
+    }
+
+    /* 恢复原有的hover边框颜色 */
+    .policy-card:nth-child(1):hover {
+      border-color: #e41f1f;
+    }
+
+    .policy-card:nth-child(2):hover {
+      border-color: #3b82f6;
+    }
+
+    .policy-card:nth-child(3):hover {
+      border-color: #10b981;
+    }
+
+    .policy-card:nth-child(4):hover {
+      border-color: #8b5cf6;
+    }
+
+    /* 恢复服务卡片的按钮样式 */
+    .service-card .service-content a {
+      background-color: rgba(228, 31, 31, 0.8);
+    }
+
+    .service-card .service-content a:hover {
+      background-color: rgba(228, 31, 31, 1);
+    }
+
+    /* 删除主题切换相关的样式和变量 */
+    :root {
+      --primary: #e41f1f;
+      --primary-dark: #c41a1a;
+    }
+
+    /* 统一使用红色主题 */
+    .text-primary {
+      color: #e41f1f;
+    }
+
+    .bg-primary {
+      background-color: #e41f1f;
+    }
+
+    .hover\:text-primary:hover {
+      color: #e41f1f;
+    }
+
+    .hover\:bg-primary:hover {
+      background-color: #e41f1f;
+    }
+
+    .border-primary {
+      border-color: #e41f1f;
+    }
+
+    /* 删除主题切换按钮相关的样式 */
+    .theme-switcher {
+      display: none;
+    }
+
+    /* 导航栏样式 */
+    .nav-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      background: transparent;
+    }
+
+    .nav-container .nav-content {
+      background: transparent;
+    }
+
+    .nav-container .nav-link,
+    .nav-container .logo-container span,
+    .nav-container .search-box input,
+    .nav-container .search-box button,
+    .nav-container .user-menu span,
+    .nav-container .user-menu i {
+      color: white;
+    }
+
+    .nav-container .search-box input {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .nav-container .search-box input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .nav-container .nav-link:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-container .nav-link span {
+      background-color: white;
+    }
+
+    /* 全局容器样式优化 */
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* 公告区域样式优化 */
+    .announcement-section {
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #edf0f2;
+      padding: 1rem 0;
+    }
+
+    .announcement-label {
+      font-size: 1.125rem;
+    }
+
+    .announcement-content {
+      height: 2.5rem;
+      line-height: 2.5rem;
+    }
+
+    /* 推荐资讯区域优化 */
+    .featured-news-section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .news-image {
+      height: 240px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* 政策指引区域优化 */
+    .policy-section {
+      padding: 5rem 0;
+      background-color: #f8f9fa;
+    }
+
+    .policy-card {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid #edf0f2;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .policy-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .policy-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* 服务介绍区域优化 */
+    .services-section {
+      padding: 5rem 0;
+    }
+
+    .service-card {
+      height: 320px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .service-content {
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
+    }
+
+    .service-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* 合作伙伴区域优化 */
+    .partners-section {
+      padding: 5rem 0;
+      background-color: #f8f9fa;
+    }
+
+    .partners-tabs {
+      margin-bottom: 3rem;
+    }
+
+    .partners-tabs button {
+      font-size: 1.125rem;
+      padding: 0.75rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .partner-card {
+      height: 120px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    /* 页脚优化 */
+    .site-footer {
+      padding: 5rem 0 3rem;
+      border-top: 1px solid #edf0f2;
+    }
+
+    .footer-top {
+      margin-bottom: 4rem;
+    }
+
+    .footer-logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-contact ul li {
+      margin-bottom: 1rem;
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid #edf0f2;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- 导航栏 -->
+  <div class="nav-container">
+    <div class="nav-content w-full">
+      <div class="container mx-auto max-w-7xl px-4">
+        <nav class="py-4 flex justify-between items-center">
+          <!-- 网站Logo -->
+          <div class="logo-container flex items-center flex-shrink-0 mr-6">
+            <a href="home.html" class="flex items-center">
+              <img src="../assets/images/logo2.png" alt="中国大学生就业网Logo" class="h-8 w-auto mr-3">
+              <span class="text-lg font-medium tracking-wide whitespace-nowrap text-white" style="font-family: 'Microsoft YaHei', sans-serif;">中国大学生就业网</span>
+            </a>
+          </div>
+          
+          <!-- 主导航菜单 -->
+          <div class="flex items-center justify-center flex-grow">
+            <div class="flex items-center space-x-6">
+              <a href="home.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-white hover:text-white/80">
+                首页
+                <span class="absolute bottom-0 left-0 w-full h-1 transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="news.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-white hover:text-white/80">
+                新闻中心
+                <span class="absolute bottom-0 left-0 w-full h-1 transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="policy.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-white hover:text-white/80">
+                政策指引
+                <span class="absolute bottom-0 left-0 w-full h-1 transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="jobs.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-white hover:text-white/80">
+                就业信息
+                <span class="absolute bottom-0 left-0 w-full h-1 transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="service.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                就业指导
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="cooperation.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-white hover:text-white/80">
+                战略合作
+                <span class="absolute bottom-0 left-0 w-full h-1 transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="about.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                地方频道
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="contact.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-white hover:text-white/80">
+                联系我们
+                <span class="absolute bottom-0 left-0 w-full h-1 transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- 右侧工具区 -->
+          <div class="flex items-center space-x-6">
+            <!-- 搜索按钮 -->
+            <button type="button" class="text-white hover:text-white/80 transition-colors" aria-label="搜索" title="搜索">
+              <i class="fas fa-search text-lg"></i>
+            </button>
+            
+            <!-- 用户菜单 -->
+            <div class="user-menu relative">
+              <button type="button" class="flex items-center space-x-1 text-white hover:text-white/80 focus:outline-none" id="userMenuButton" aria-label="用户菜单" title="用户菜单">
+                <span class="text-sm">我的账户</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              
+              <!-- 用户下拉菜单 -->
+              <div class="user-dropdown absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden" id="userDropdown">
+                <a href="javascript:void(0);" onclick="return false;" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" style="cursor: default;">
+                  <i class="fas fa-user mr-2"></i>个人中心
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bookmark mr-2"></i>我的收藏
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bell mr-2"></i>消息通知
+                </a>
+                <div class="border-t border-gray-100 my-1"></div>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-sign-out-alt mr-2"></i>退出登录
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主体内容 -->
+  <div class="content-wrapper">
+    <!-- Banner 区域 -->
+    <section id="banner" class="banner-section">
+      <div class="banner-content">
+        <h1 class="banner-title font-semibold">职通央企<br>包揽未来</h1>
+        <p class="banner-description">中国最具影响力的大学生就业信息平台，汇集全面的就业信息、行业资讯和政策指引，助你规划职业生涯。</p>
+        <a href="#announcement" class="explore-button scroll-smooth">
+          立即探索
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      <!-- 添加轮播指示点 -->
+      <div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div class="w-2 h-2 bg-white rounded-full opacity-100"></div>
+        <div class="w-2 h-2 bg-white rounded-full opacity-50"></div>
+        <div class="w-2 h-2 bg-white rounded-full opacity-50"></div>
+      </div>
+    </section>
+
+    <!-- 主要内容区域 -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- 公告信息 -->
+        <div id="announcement" class="bg-white p-8 rounded-lg shadow-lg mb-8 mt-8">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800">公告信息</h2>
+                    <div class="mt-2 h-1 w-24 bg-primary rounded-full"></div>
+                </div>
+                <a href="#" class="text-primary hover:text-primary-dark transition-colors duration-300 text-sm flex items-center">
+                    更多公告
+                    <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                </a>
+            </div>
+            <div class="space-y-4">
+                <a href="#" class="block group">
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                        <i class="fas fa-bullhorn text-primary text-xl"></i>
+                        <div class="flex-grow">
+                            <span class="text-gray-700 group-hover:text-primary transition-colors duration-300">关于2024年春季校园招聘会的通知</span>
+                        </div>
+                        <span class="text-gray-400 text-sm">2024-03-15</span>
+                    </div>
+                </a>
+                <a href="#" class="block group">
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                        <i class="fas fa-bullhorn text-primary text-xl"></i>
+                        <div class="flex-grow">
+                            <span class="text-gray-700 group-hover:text-primary transition-colors duration-300">2024届毕业生就业指导讲座安排</span>
+                        </div>
+                        <span class="text-gray-400 text-sm">2024-03-12</span>
+                    </div>
+                </a>
+                <a href="#" class="block group">
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                        <i class="fas fa-bullhorn text-primary text-xl"></i>
+                        <div class="flex-grow">
+                            <span class="text-gray-700 group-hover:text-primary transition-colors duration-300">关于开展就业帮扶工作的通知</span>
+                        </div>
+                        <span class="text-gray-400 text-sm">2024-03-10</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 地方频道 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">地方频道</h2>
+            <div class="grid grid-cols-8 gap-4">
+                <button class="px-6 py-2 bg-gray-50 hover:bg-primary hover:text-white rounded-full transition-colors duration-300">北京</button>
+                <button class="px-6 py-2 bg-gray-50 hover:bg-primary hover:text-white rounded-full transition-colors duration-300">上海</button>
+                <button class="px-6 py-2 bg-gray-50 hover:bg-primary hover:text-white rounded-full transition-colors duration-300">广州</button>
+                <button class="px-6 py-2 bg-gray-50 hover:bg-primary hover:text-white rounded-full transition-colors duration-300">深圳</button>
+                <button class="px-6 py-2 bg-gray-50 hover:bg-primary hover:text-white rounded-full transition-colors duration-300">杭州</button>
+                <button class="px-6 py-2 bg-gray-50 hover:bg-primary hover:text-white rounded-full transition-colors duration-300">成都</button>
+                <button class="px-6 py-2 bg-gray-50 hover:bg-primary hover:text-white rounded-full transition-colors duration-300">武汉</button>
+                <button class="px-6 py-2 bg-gray-50 hover:bg-primary hover:text-white rounded-full transition-colors duration-300">南京</button>
+            </div>
+        </div>
+
+        <!-- 站内头条 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">站内头条</h2>
+            <div class="grid grid-cols-2 gap-8">
+                <div class="relative rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902" alt="头条新闻" class="w-full h-64 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                        <h3 class="text-xl font-bold text-white mb-2">2024年春季校园招聘会圆满结束</h3>
+                        <p class="text-gray-200">500余家企业参与，为毕业生提供超过5000个就业岗位</p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" alt="新闻图片" class="w-24 h-24 object-cover rounded-lg">
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">就业指导中心举办简历制作工作坊</h3>
+                            <p class="text-gray-600 text-sm">专业HR分享简历制作技巧，助力求职成功</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0" alt="新闻图片" class="w-24 h-24 object-cover rounded-lg">
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">我校与多家知名企业签署实习基地协议</h3>
+                            <p class="text-gray-600 text-sm">为学生提供优质实习岗位，促进产学研结合</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 焦点热点 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">焦点热点</h2>
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-fire text-red-500 text-xl mr-3"></i>
+                        <h3 class="font-semibold text-gray-800">2024年国考报名人数创新高</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">报名人数突破200万，竞争比例创历史新高</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-fire text-red-500 text-xl mr-3"></i>
+                        <h3 class="font-semibold text-gray-800">互联网行业春季招聘全面启动</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">多家头部企业发布招聘计划，提供优质岗位</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-fire text-red-500 text-xl mr-3"></i>
+                        <h3 class="font-semibold text-gray-800">最新：各地区人才引进政策汇总</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">多地出台优惠政策，吸引高校毕业生就业</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 政策指引 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">政策指引</h2>
+            <div class="grid grid-cols-2 gap-8">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-book text-blue-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">应届生就业补贴政策</h3>
+                        <p class="text-gray-600 text-sm">详解各地区应届毕业生就业补贴申请条件及流程</p>
+                        <div class="mt-4 flex items-center text-sm text-gray-500">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>2024-02-20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-seedling text-green-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">创业扶持政策解读</h3>
+                        <p class="text-gray-600 text-sm">解读最新创业扶持政策，助力毕业生创业梦想</p>
+                        <div class="mt-4 flex items-center text-sm text-gray-500">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>2024-02-18</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新闻中心 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">新闻中心</h2>
+                <a href="#" class="text-primary hover:text-primary-dark transition-colors duration-300">更多</a>
+            </div>
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4" alt="新闻图片" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">最新就业政策解读</h3>
+                        <p class="text-gray-600 text-sm mb-4">深入解读2024年最新就业政策要点</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="far fa-eye mr-2"></i>
+                            <span>2,356</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" alt="新闻图片" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">热门行业分析</h3>
+                        <p class="text-gray-600 text-sm mb-4">2024年最具发展潜力的行业分析报告</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="far fa-eye mr-2"></i>
+                            <span>1,892</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0" alt="新闻图片" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">职场经验分享</h3>
+                        <p class="text-gray-600 text-sm mb-4">优秀毕业生的职场成长故事</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="far fa-eye mr-2"></i>
+                            <span>1,567</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 就业信息 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">就业信息</h2>
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">知名企业校园招聘</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <img src="https://images.unsplash.com/photo-1611944212129-29977ae1398c" alt="企业logo" class="w-12 h-12 rounded-lg object-cover">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">腾讯科技</h4>
+                                    <p class="text-sm text-gray-600">技术研发、产品运营等多个岗位</p>
+                                </div>
+                            </div>
+                            <span class="text-primary">投递简历</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <img src="https://images.unsplash.com/photo-1611944212129-29977ae1398c" alt="企业logo" class="w-12 h-12 rounded-lg object-cover">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">阿里巴巴</h4>
+                                    <p class="text-sm text-gray-600">软件开发、算法工程师等岗位</p>
+                                </div>
+                            </div>
+                            <span class="text-primary">投递简历</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">国企事业单位招聘</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <img src="https://images.unsplash.com/photo-1611944212129-29977ae1398c" alt="单位logo" class="w-12 h-12 rounded-lg object-cover">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">中国移动</h4>
+                                    <p class="text-sm text-gray-600">技术支持、客户服务等岗位</p>
+                                </div>
+                            </div>
+                            <span class="text-primary">投递简历</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <img src="https://images.unsplash.com/photo-1611944212129-29977ae1398c" alt="单位logo" class="w-12 h-12 rounded-lg object-cover">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">国家电网</h4>
+                                    <p class="text-sm text-gray-600">电力工程、运维管理等岗位</p>
+                                </div>
+                            </div>
+                            <span class="text-primary">投递简历</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 就业指导 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">就业指导</h2>
+            <div class="grid grid-cols-4 gap-6">
+                <div class="bg-gray-50 rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-file-alt text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">简历制作指南</h3>
+                    <p class="text-gray-600 text-sm">专业的简历制作技巧</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-comments text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">面试技巧分享</h3>
+                    <p class="text-gray-600 text-sm">面试常见问题解答</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-purple-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">职业规划指导</h3>
+                    <p class="text-gray-600 text-sm">科学的职业生涯规划</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-lightbulb text-yellow-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">求职经验分享</h3>
+                    <p class="text-gray-600 text-sm">优秀毕业生求职经验</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 爱心公益 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">爱心公益</h2>
+            <div class="grid grid-cols-3 gap-6">
+                <div class="relative rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c" alt="公益活动" class="w-full h-48 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                        <h3 class="text-white font-semibold mb-1">"暖心助航"贫困生就业帮扶</h3>
+                        <p class="text-gray-200 text-sm">为贫困学生提供就业帮扶</p>
+                    </div>
+                </div>
+                <div class="relative rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b" alt="公益活动" class="w-full h-48 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                        <h3 class="text-white font-semibold mb-1">"职启未来"残障学生支持</h3>
+                        <p class="text-gray-200 text-sm">为残障学生提供就业机会</p>
+                    </div>
+                </div>
+                <div class="relative rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952" alt="公益活动" class="w-full h-48 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                        <h3 class="text-white font-semibold mb-1">"乡村振兴"基层就业引导</h3>
+                        <p class="text-gray-200 text-sm">支持毕业生投身乡村建设</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 活动集锦 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">活动集锦</h2>
+                <a href="#" class="text-primary hover:text-primary-dark transition-colors duration-300">更多活动</a>
+            </div>
+            <div class="grid grid-cols-4 gap-6">
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87" alt="活动照片" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">2024春季校园招聘会</h3>
+                        <p class="text-gray-600 text-sm">500+知名企业现场招聘</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4" alt="活动照片" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">简历优化工作坊</h3>
+                        <p class="text-gray-600 text-sm">HR一对一简历指导</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="活动照片" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">职业发展咨询日</h3>
+                        <p class="text-gray-600 text-sm">行业专家经验分享</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655" alt="活动照片" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">职场技能培训营</h3>
+                        <p class="text-gray-600 text-sm">实用职场技能提升</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 友情链接 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800">友情链接</h2>
+                    <div class="mt-2 h-1 w-24 bg-primary rounded-full"></div>
+                </div>
+                <a href="#" class="text-primary hover:text-primary-dark transition-colors duration-300 text-sm flex items-center">
+                    更多链接
+                    <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                </a>
+            </div>
+            <div class="grid grid-cols-4 gap-8">
+                <a href="#" class="group">
+                    <div class="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-xl border border-gray-100 hover:border-primary/20">
+                        <div class="flex flex-col items-center">
+                            <div class="w-32 h-16 flex items-center justify-center mb-4 filter group-hover:brightness-110 transition-all duration-300">
+                                <img src="../assets/images/partners/zhaoshang.png" alt="招商银行" class="h-12 object-contain">
+                            </div>
+                            <span class="text-gray-600 font-medium group-hover:text-primary transition-colors duration-300">招商银行</span>
+                            <span class="text-xs text-gray-400 mt-1">战略合作伙伴</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="group">
+                    <div class="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-xl border border-gray-100 hover:border-primary/20">
+                        <div class="flex flex-col items-center">
+                            <div class="w-32 h-16 flex items-center justify-center mb-4 filter group-hover:brightness-110 transition-all duration-300">
+                                <img src="../assets/images/partners/huatai.png" alt="华泰证券" class="h-12 object-contain">
+                            </div>
+                            <span class="text-gray-600 font-medium group-hover:text-primary transition-colors duration-300">华泰证券</span>
+                            <span class="text-xs text-gray-400 mt-1">战略合作伙伴</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="group">
+                    <div class="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-xl border border-gray-100 hover:border-primary/20">
+                        <div class="flex flex-col items-center">
+                            <div class="w-32 h-16 flex items-center justify-center mb-4 filter group-hover:brightness-110 transition-all duration-300">
+                                <img src="../assets/images/partners/kaiying.png" alt="恺英网络" class="h-12 object-contain">
+                            </div>
+                            <span class="text-gray-600 font-medium group-hover:text-primary transition-colors duration-300">恺英网络</span>
+                            <span class="text-xs text-gray-400 mt-1">战略合作伙伴</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="group">
+                    <div class="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-xl border border-gray-100 hover:border-primary/20">
+                        <div class="flex flex-col items-center">
+                            <div class="w-32 h-16 flex items-center justify-center mb-4 filter group-hover:brightness-110 transition-all duration-300">
+                                <img src="../assets/images/partners/sanqi.png" alt="三七互娱" class="h-12 object-contain">
+                            </div>
+                            <span class="text-gray-600 font-medium group-hover:text-primary transition-colors duration-300">三七互娱</span>
+                            <span class="text-xs text-gray-400 mt-1">战略合作伙伴</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- 回到顶部按钮 -->
+  <button id="backToTop" class="hidden fixed right-8 bottom-8 bg-primary text-white w-12 h-12 rounded-full shadow-md items-center justify-center transition-all hover:bg-primary-dark" aria-label="回到顶部">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- 页脚组件 -->
+  <footer class="bg-white text-gray-800 py-12 border-t">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-12 gap-8">
+            <!-- 左侧导航菜单 -->
+            <div class="col-span-6 grid grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">关于我们</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">平台介绍</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">联系方式</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">服务协议</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">就业服务</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">校园招聘</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">求职指导</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">政策解读</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">新闻资讯</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">行业动态</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">热点关注</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">活动公告</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">帮助中心</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">常见问题</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">用户指南</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">意见反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 中间联系方式 -->
+            <div class="col-span-2">
+                <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-600 mt-1 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">北京市海淀区中关村大街1号</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone-alt text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">400-123-4567</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">contact@jobinfo.com</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-clock text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">工作日 9:00-18:00</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 右侧二维码 -->
+            <div class="col-span-4">
+                <h3 class="text-lg font-bold mb-4">关注我们</h3>
+                <div class="grid grid-cols-5 gap-3">
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/wechat-qr.png" alt="微信二维码" class="w-20 h-20 mx-auto mb-1 rounded-lg shadow-sm">
+                        <p class="text-xs text-gray-600">微信公众号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/douyin-qr.png" alt="抖音二维码" class="w-20 h-20 mx-auto mb-1 rounded-lg shadow-sm">
+                        <p class="text-xs text-gray-600">抖音号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/xiaohongshu-qr.png" alt="小红书二维码" class="w-20 h-20 mx-auto mb-1 rounded-lg shadow-sm">
+                        <p class="text-xs text-gray-600">小红书号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/kuaishou-qr.png" alt="快手二维码" class="w-20 h-20 mx-auto mb-1 rounded-lg shadow-sm">
+                        <p class="text-xs text-gray-600">快手号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/weibo-qr.png" alt="微博二维码" class="w-20 h-20 mx-auto mb-1 rounded-lg shadow-sm">
+                        <p class="text-xs text-gray-600">微博</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 版权信息 -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <div class="text-center text-gray-600 text-sm">
+                <p>&copy; 2024 大学生就业信息平台 All Rights Reserved.</p>
+                <p class="mt-2">京ICP备12345678号-1 | 京公网安备11010802030088号</p>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 平滑滚动功能
+    document.querySelector('.explore-button').addEventListener('click', (e) => {
+      e.preventDefault();
+      const announcementSection = document.getElementById('announcement');
+      announcementSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+
+    // 回到顶部按钮
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.remove('hidden');
+        backToTopButton.classList.add('flex');
+      } else {
+        backToTopButton.classList.remove('flex');
+        backToTopButton.classList.add('hidden');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // 导航链接效果
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        const underline = link.querySelector('span');
+        underline.classList.remove('scale-x-0');
+        underline.classList.add('scale-x-100');
+      });
+      
+      link.addEventListener('mouseleave', () => {
+        const underline = link.querySelector('span');
+        underline.classList.remove('scale-x-100');
+        underline.classList.add('scale-x-0');
+      });
+    });
+    
+    // 用户菜单交互
+    const userMenuButton = document.getElementById('userMenuButton');
+    const userDropdown = document.getElementById('userDropdown');
+    
+    if (userMenuButton && userDropdown) {
+      userMenuButton.addEventListener('click', () => {
+        userDropdown.classList.toggle('hidden');
+      });
+      
+      document.addEventListener('click', (event) => {
+        if (!userMenuButton.contains(event.target) && !userDropdown.contains(event.target)) {
+          userDropdown.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

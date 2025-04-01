@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地方频道 - 大学生就业信息平台</title>
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- 自定义CSS -->
+  <link rel="stylesheet" href="../css/colors.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <style>
+    :root {
+      --primary: #e41f1f;
+      --primary-dark: #c41a1a;
+      --primary-light: #ff2424;
+    }
+    
+    /* 导航栏当前页面样式 */
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 2px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+    
+    /* 关于我们卡片样式 */
+    .about-card {
+      border: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+    
+    .about-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* 图标颜色 */
+    .about-icon {
+      color: var(--primary);
+    }
+    
+    /* 按钮样式 */
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* 标题装饰线 */
+    .section-title::after {
+      background-color: var(--primary);
+    }
+    
+    /* 链接悬停效果 */
+    .hover-primary:hover {
+      color: var(--primary);
+    }
+    
+    /* 时间轴样式 */
+    .timeline-dot {
+      background-color: var(--primary);
+    }
+    
+    .timeline-line {
+      background-color: var(--primary);
+      opacity: 0.2;
+    }
+    
+    /* 团队成员卡片 */
+    .team-card:hover .team-info {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    /* 数据统计 */
+    .stats-number {
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    /* 使命愿景背景 */
+    .mission-vision {
+      background: linear-gradient(45deg, var(--primary), var(--primary-light));
+      color: white;
+    }
+
+    /* 链接颜色 */
+    .channel-link:hover {
+      color: var(--primary);
+    }
+
+    /* 标题下划线 */
+    .section-title::after {
+      background-color: var(--primary);
+    }
+
+    /* 卡片悬停效果 */
+    .channel-card:hover {
+      border-color: var(--primary);
+    }
+
+    /* 按钮样式 */
+    .btn-more {
+      color: var(--primary);
+    }
+
+    .btn-more:hover {
+      color: var(--primary-dark);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- 导航栏 -->
+  <div class="nav-container bg-white border-b border-gray-200">
+    <div class="nav-content w-full">
+      <div class="container mx-auto max-w-7xl px-4">
+        <nav class="py-4 flex justify-between items-center">
+          <!-- 网站Logo -->
+          <div class="logo-container flex items-center flex-shrink-0 mr-6">
+            <a href="home.html" class="flex items-center">
+              <img src="../assets/images/logo.png" alt="中国大学生就业网Logo" class="h-8 w-auto mr-3">
+              <span class="text-lg font-medium tracking-wide whitespace-nowrap text-gray-900" style="font-family: 'Microsoft YaHei', sans-serif;">中国大学生就业网</span>
+            </a>
+          </div>
+          
+          <!-- 主导航菜单 -->
+          <div class="flex items-center justify-center flex-grow">
+            <div class="flex items-center space-x-6">
+              <a href="home.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                首页
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="news.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                新闻中心
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="policy.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                政策指引
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="jobs.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                就业信息
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="service.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                就业指导
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="cooperation.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                战略合作
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="about.html" class="nav-link active text-primary font-medium">地方频道</a>
+              <a href="contact.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                联系我们
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- 右侧工具区 -->
+          <div class="flex items-center space-x-6">
+            <!-- 搜索按钮 -->
+            <button type="button" class="text-gray-700 hover:text-primary transition-colors" aria-label="搜索" title="搜索">
+              <i class="fas fa-search text-lg"></i>
+            </button>
+            
+            <!-- 用户菜单 -->
+            <div class="user-menu relative">
+              <button type="button" class="flex items-center space-x-1 text-gray-700 hover:text-primary focus:outline-none" id="userMenuButton" aria-label="用户菜单" title="用户菜单">
+                <span class="text-sm">我的账户</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              
+              <!-- 用户下拉菜单 -->
+              <div class="user-dropdown absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden" id="userDropdown">
+                <a href="javascript:void(0);" onclick="return false;" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" style="cursor: default;">
+                  <i class="fas fa-user mr-2"></i>个人中心
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bookmark mr-2"></i>我的收藏
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bell mr-2"></i>消息通知
+                </a>
+                <div class="border-t border-gray-100 my-1"></div>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-sign-out-alt mr-2"></i>退出登录
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主要内容区 -->
+  <div class="content-wrapper container mx-auto px-4 py-8">
+    <!-- 页面标题 -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900">地方频道</h1>
+      <p class="mt-2 text-gray-600">各省市地区就业信息及政策汇总</p>
+    </div>
+
+    <!-- 省级分类列表 -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+      <h2 class="text-xl font-bold mb-4">省级分类</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- 华北地区 -->
+        <div class="space-y-2">
+          <h3 class="font-semibold text-gray-900">华北地区</h3>
+          <div class="space-y-1">
+            <a href="#beijing" class="block text-gray-600 hover:text-primary">北京市</a>
+            <a href="#tianjin" class="block text-gray-600 hover:text-primary">天津市</a>
+            <a href="#hebei" class="block text-gray-600 hover:text-primary">河北省</a>
+            <a href="#shanxi" class="block text-gray-600 hover:text-primary">山西省</a>
+            <a href="#neimenggu" class="block text-gray-600 hover:text-primary">内蒙古自治区</a>
+          </div>
+        </div>
+
+        <!-- 华东地区 -->
+        <div class="space-y-2">
+          <h3 class="font-semibold text-gray-900">华东地区</h3>
+          <div class="space-y-1">
+            <a href="#shanghai" class="block text-gray-600 hover:text-primary">上海市</a>
+            <a href="#jiangsu" class="block text-gray-600 hover:text-primary">江苏省</a>
+            <a href="#zhejiang" class="block text-gray-600 hover:text-primary">浙江省</a>
+            <a href="#anhui" class="block text-gray-600 hover:text-primary">安徽省</a>
+            <a href="#fujian" class="block text-gray-600 hover:text-primary">福建省</a>
+            <a href="#jiangxi" class="block text-gray-600 hover:text-primary">江西省</a>
+            <a href="#shandong" class="block text-gray-600 hover:text-primary">山东省</a>
+          </div>
+        </div>
+
+        <!-- 华中地区 -->
+        <div class="space-y-2">
+          <h3 class="font-semibold text-gray-900">华中地区</h3>
+          <div class="space-y-1">
+            <a href="#henan" class="block text-gray-600 hover:text-primary">河南省</a>
+            <a href="#hubei" class="block text-gray-600 hover:text-primary">湖北省</a>
+            <a href="#hunan" class="block text-gray-600 hover:text-primary">湖南省</a>
+          </div>
+        </div>
+
+        <!-- 华南地区 -->
+        <div class="space-y-2">
+          <h3 class="font-semibold text-gray-900">华南地区</h3>
+          <div class="space-y-1">
+            <a href="#guangdong" class="block text-gray-600 hover:text-primary">广东省</a>
+            <a href="#guangxi" class="block text-gray-600 hover:text-primary">广西壮族自治区</a>
+            <a href="#hainan" class="block text-gray-600 hover:text-primary">海南省</a>
+          </div>
+        </div>
+
+        <!-- 西南地区 -->
+        <div class="space-y-2">
+          <h3 class="font-semibold text-gray-900">西南地区</h3>
+          <div class="space-y-1">
+            <a href="#chongqing" class="block text-gray-600 hover:text-primary">重庆市</a>
+            <a href="#sichuan" class="block text-gray-600 hover:text-primary">四川省</a>
+            <a href="#guizhou" class="block text-gray-600 hover:text-primary">贵州省</a>
+            <a href="#yunnan" class="block text-gray-600 hover:text-primary">云南省</a>
+            <a href="#xizang" class="block text-gray-600 hover:text-primary">西藏自治区</a>
+          </div>
+        </div>
+
+        <!-- 西北地区 -->
+        <div class="space-y-2">
+          <h3 class="font-semibold text-gray-900">西北地区</h3>
+          <div class="space-y-1">
+            <a href="#shaanxi" class="block text-gray-600 hover:text-primary">陕西省</a>
+            <a href="#gansu" class="block text-gray-600 hover:text-primary">甘肃省</a>
+            <a href="#qinghai" class="block text-gray-600 hover:text-primary">青海省</a>
+            <a href="#ningxia" class="block text-gray-600 hover:text-primary">宁夏回族自治区</a>
+            <a href="#xinjiang" class="block text-gray-600 hover:text-primary">新疆维吾尔自治区</a>
+          </div>
+        </div>
+
+        <!-- 东北地区 -->
+        <div class="space-y-2">
+          <h3 class="font-semibold text-gray-900">东北地区</h3>
+          <div class="space-y-1">
+            <a href="#liaoning" class="block text-gray-600 hover:text-primary">辽宁省</a>
+            <a href="#jilin" class="block text-gray-600 hover:text-primary">吉林省</a>
+            <a href="#heilongjiang" class="block text-gray-600 hover:text-primary">黑龙江省</a>
+          </div>
+        </div>
+
+        <!-- 港澳台地区 -->
+        <div class="space-y-2">
+          <h3 class="font-semibold text-gray-900">港澳台地区</h3>
+          <div class="space-y-1">
+            <a href="#hongkong" class="block text-gray-600 hover:text-primary">香港特别行政区</a>
+            <a href="#macao" class="block text-gray-600 hover:text-primary">澳门特别行政区</a>
+            <a href="#taiwan" class="block text-gray-600 hover:text-primary">台湾省</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 地方频道列表 -->
+    <div class="space-y-8">
+      <!-- 北京频道示例 -->
+      <div id="beijing" class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- 头部大图 -->
+        <div class="relative h-64">
+          <img src="https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?w=800&auto=format&fit=crop&q=60" alt="北京市地标" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
+            <div class="absolute bottom-6 left-6 text-white">
+              <h2 class="text-3xl font-bold mb-2">北京市</h2>
+              <p class="text-sm opacity-90">首都就业信息服务平台</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6">
+          <!-- 图文专题展示 -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- 专题1：就业政策解读 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=60" alt="就业政策" class="w-full h-48 object-cover">
+              <div class="p-4">
+                <h3 class="text-xl font-bold mb-2">2024年北京市就业政策解读</h3>
+                <p class="text-gray-600 text-sm mb-3">深入解读北京市最新发布的就业政策要点，助力毕业生精准把握政策红利。</p>
+                <a href="#" class="text-primary hover:text-primary-dark text-sm">查看详情 →</a>
+              </div>
+            </div>
+
+            <!-- 专题2：重点产业人才需求 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=60" alt="产业人才" class="w-full h-48 object-cover">
+              <div class="p-4">
+                <h3 class="text-xl font-bold mb-2">北京重点产业人才需求分析</h3>
+                <p class="text-gray-600 text-sm mb-3">聚焦科技创新、金融服务、文化创意等重点产业，解析人才需求趋势。</p>
+                <a href="#" class="text-primary hover:text-primary-dark text-sm">查看详情 →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 最新资讯 -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- 政策文件 -->
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="font-semibold text-lg">最新政策</h3>
+                <a href="#" class="text-sm text-primary hover:text-primary-dark">更多</a>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop&q=60" alt="政策新闻" class="w-full h-32 object-cover rounded-lg mb-3">
+                <ul class="space-y-2">
+                  <li>
+                    <a href="#" class="text-gray-600 hover:text-primary flex items-center">
+                      <span class="w-2 h-2 bg-primary rounded-full mr-2"></span>
+                      <span class="flex-grow">北京市2024年高校毕业生就业创业政策</span>
+                      <span class="text-sm text-gray-400">03-15</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-gray-600 hover:text-primary flex items-center">
+                      <span class="w-2 h-2 bg-primary rounded-full mr-2"></span>
+                      <span class="flex-grow">关于开展2024年春季校园招聘的通知</span>
+                      <span class="text-sm text-gray-400">03-10</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 招聘信息 -->
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="font-semibold text-lg">招聘信息</h3>
+                <a href="#" class="text-sm text-primary hover:text-primary-dark">更多</a>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?w=800&auto=format&fit=crop&q=60" alt="招聘会场" class="w-full h-32 object-cover rounded-lg mb-3">
+                <ul class="space-y-2">
+                  <li>
+                    <a href="#" class="text-gray-600 hover:text-primary flex items-center">
+                      <span class="w-2 h-2 bg-primary rounded-full mr-2"></span>
+                      <span class="flex-grow">2024北京市属国企春季校园招聘会</span>
+                      <span class="text-sm text-gray-400">03-20</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-gray-600 hover:text-primary flex items-center">
+                      <span class="w-2 h-2 bg-primary rounded-full mr-2"></span>
+                      <span class="flex-grow">中关村科技园区专场招聘活动</span>
+                      <span class="text-sm text-gray-400">03-18</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 服务指南 -->
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="font-semibold text-lg">服务指南</h3>
+                <a href="#" class="text-sm text-primary hover:text-primary-dark">更多</a>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&auto=format&fit=crop&q=60" alt="服务指南" class="w-full h-32 object-cover rounded-lg mb-3">
+                <ul class="space-y-2">
+                  <li>
+                    <a href="#" class="text-gray-600 hover:text-primary flex items-center">
+                      <span class="w-2 h-2 bg-primary rounded-full mr-2"></span>
+                      <span class="flex-grow">北京市人才服务中心办事指南</span>
+                      <span class="text-sm text-gray-400">常驻</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-gray-600 hover:text-primary flex items-center">
+                      <span class="w-2 h-2 bg-primary rounded-full mr-2"></span>
+                      <span class="flex-grow">毕业生档案转接办理流程</span>
+                      <span class="text-sm text-gray-400">常驻</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 其他省份频道可以按照相同格式添加 -->
+    </div>
+  </div>
+
+  <!-- 页脚组件 -->
+  <footer class="bg-white text-gray-800 py-12 border-t">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-12 gap-8">
+            <!-- 左侧导航菜单 -->
+            <div class="col-span-6 grid grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">关于我们</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">平台介绍</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">联系方式</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">服务协议</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">就业服务</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">校园招聘</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">求职指导</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">政策解读</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">新闻资讯</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">行业动态</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">热点关注</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">活动公告</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">帮助中心</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">常见问题</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">用户指南</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">意见反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 中间联系方式 -->
+            <div class="col-span-2">
+                <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-600 mt-1 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">北京市海淀区中关村大街1号</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone-alt text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">400-123-4567</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">contact@jobinfo.com</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-clock text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">工作日 9:00-18:00</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 右侧二维码 -->
+            <div class="col-span-4">
+                <h3 class="text-lg font-bold mb-4">关注我们</h3>
+                <div class="grid grid-cols-5 gap-3">
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/wechat-qr.png" alt="微信二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">微信公众号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/douyin-qr.png" alt="抖音二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">抖音号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/xiaohongshu-qr.png" alt="小红书二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">小红书号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/kuaishou-qr.png" alt="快手二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">快手号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/weibo-qr.png" alt="微博二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">微博</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 版权信息 -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <div class="text-center text-gray-600 text-sm">
+                <p>© 2024 大学生就业信息平台 All Rights Reserved.</p>
+                <p class="mt-2">京ICP备12345678号-1 | 京公网安备110108020300088号</p>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 页面加载完成后，通知父框架已准备好接收主题变更
+    window.addEventListener('load', function() {
+      // 检查是否有保存的主题
+      const savedTheme = localStorage.getItem('selectedTheme');
+      if (savedTheme) {
+        applyTheme(savedTheme);
+      }
+
+      // 通知父窗口此页面已准备好接收主题变更
+      if (window.parent) {
+        window.parent.postMessage({ type: 'frameReady', frameId: 'about' }, '*');
+      }
+    });
+
+    // 监听来自父窗口的消息
+    window.addEventListener('message', function(event) {
+      // 检查消息类型是否为主题变更
+      if (event.data.type === 'themeChange') {
+        applyTheme(event.data.theme);
+      }
+    });
+
+    // 应用主题的函数
+    function applyTheme(theme) {
+      // 重置所有主题相关的CSS变量
+      document.documentElement.style.removeProperty('--primary');
+      document.documentElement.style.removeProperty('--primary-dark');
+      document.documentElement.style.removeProperty('--primary-light');
+      
+      // 根据选择的主题设置CSS变量
+      switch(theme) {
+        case 'blue':
+          document.documentElement.style.setProperty('--primary', '#3b82f6');
+          document.documentElement.style.setProperty('--primary-dark', '#2563eb');
+          document.documentElement.style.setProperty('--primary-light', '#93c5fd');
+          break;
+        case 'red':
+          document.documentElement.style.setProperty('--primary', '#ef4444');
+          document.documentElement.style.setProperty('--primary-dark', '#dc2626');
+          document.documentElement.style.setProperty('--primary-light', '#fca5a5');
+          break;
+        case 'orange':
+          document.documentElement.style.setProperty('--primary', '#f97316');
+          document.documentElement.style.setProperty('--primary-dark', '#ea580c');
+          document.documentElement.style.setProperty('--primary-light', '#fdba74');
+          break;
+        case 'teal':
+          document.documentElement.style.setProperty('--primary', '#14b8a6');
+          document.documentElement.style.setProperty('--primary-dark', '#0d9488');
+          document.documentElement.style.setProperty('--primary-light', '#5eead4');
+          break;
+        default:
+          document.documentElement.style.setProperty('--primary', '#3b82f6');
+          document.documentElement.style.setProperty('--primary-dark', '#2563eb');
+          document.documentElement.style.setProperty('--primary-light', '#93c5fd');
+      }
+    }
+  </script>
+</body>
+</html> 

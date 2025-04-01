@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就业指导 - 大学生就业信息平台</title>
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/colors.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <style>
+    :root {
+      --primary: #e41f1f;
+      --primary-dark: #c41a1a;
+      --primary-light: #ff2424;
+    }
+    
+    /* 导航栏当前页面样式 */
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 2px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+    
+    /* 服务卡片样式 */
+    .service-card {
+      border: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* 服务图标颜色 */
+    .service-icon {
+      color: var(--primary);
+    }
+    
+    /* 按钮样式 */
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* 标题装饰线 */
+    .section-title::after {
+      background-color: var(--primary);
+    }
+    
+    /* 链接悬停效果 */
+    .hover-primary:hover {
+      color: var(--primary);
+    }
+    
+    /* 服务标签 */
+    .service-tag {
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      background-color: rgba(228, 31, 31, 0.1);
+    }
+    
+    /* 特色服务背景 */
+    .feature-service {
+      background: linear-gradient(45deg, var(--primary), var(--primary-light));
+      color: white;
+    }
+    
+    /* 服务数据统计 */
+    .stats-number {
+      color: var(--primary);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- 导航栏 -->
+  <div class="nav-container bg-white border-b border-gray-200">
+    <div class="nav-content w-full">
+      <div class="container mx-auto max-w-7xl px-4">
+        <nav class="py-4 flex justify-between items-center">
+          <!-- 网站Logo -->
+          <div class="logo-container flex items-center flex-shrink-0 mr-6">
+            <a href="home.html" class="flex items-center">
+              <img src="../assets/images/logo.png" alt="中国大学生就业网Logo" class="h-8 w-auto mr-3">
+              <span class="text-lg font-medium tracking-wide whitespace-nowrap text-gray-900" style="font-family: 'Microsoft YaHei', sans-serif;">中国大学生就业网</span>
+            </a>
+          </div>
+          
+          <!-- 主导航菜单 -->
+          <div class="flex items-center justify-center flex-grow">
+            <div class="flex items-center space-x-6">
+              <a href="home.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                首页
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="news.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                新闻中心
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="policy.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                政策指引
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="jobs.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                就业信息
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="service.html" class="nav-link active text-primary font-medium">就业指导</a>
+              <a href="cooperation.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                战略合作
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="about.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                地方频道
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="contact.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                联系我们
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- 右侧工具区 -->
+          <div class="flex items-center space-x-6">
+            <!-- 搜索按钮 -->
+            <button type="button" class="text-gray-700 hover:text-primary transition-colors" aria-label="搜索" title="搜索">
+              <i class="fas fa-search text-lg"></i>
+            </button>
+            
+            <!-- 用户菜单 -->
+            <div class="user-menu relative">
+              <button type="button" class="flex items-center space-x-1 text-gray-700 hover:text-primary focus:outline-none" id="userMenuButton" aria-label="用户菜单" title="用户菜单">
+                <span class="text-sm">我的账户</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              
+              <!-- 用户下拉菜单 -->
+              <div class="user-dropdown absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden" id="userDropdown">
+                <a href="javascript:void(0);" onclick="return false;" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" style="cursor: default;">
+                  <i class="fas fa-user mr-2"></i>个人中心
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bookmark mr-2"></i>我的收藏
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bell mr-2"></i>消息通知
+                </a>
+                <div class="border-t border-gray-100 my-1"></div>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-sign-out-alt mr-2"></i>退出登录
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主要内容区域 -->
+  <main class="container mx-auto px-4 py-8">
+    <!-- 页面标题 -->
+    <h1 class="page-title text-3xl font-bold mb-8">就业指导服务</h1>
+    
+    <!-- 服务内容网格 -->
+    <div class="grid grid-cols-1 gap-8">
+      <!-- 求职准备专题 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="relative h-64">
+          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&auto=format&fit=crop&q=60" alt="求职准备" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+            <div class="p-6 text-white">
+              <h2 class="text-2xl font-bold mb-2">求职准备专题</h2>
+              <p class="text-sm opacity-90">全方位指导，助你做好求职准备</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex gap-4">
+              <div class="w-24 h-24 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&auto=format&fit=crop&q=60" alt="简历制作" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">简历制作技巧</h3>
+                <p class="text-gray-600 text-sm">学习如何制作一份优秀的简历，突出个人优势，提升求职竞争力。</p>
+                <a href="#" class="text-primary text-sm mt-2 inline-block hover:text-primary-dark">查看详情 →</a>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-24 h-24 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&auto=format&fit=crop&q=60" alt="面试技巧" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">面试技巧指导</h3>
+                <p class="text-gray-600 text-sm">掌握面试要点，了解面试官关注重点，提高面试成功率。</p>
+                <a href="#" class="text-primary text-sm mt-2 inline-block hover:text-primary-dark">查看详情 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 职业规划专题 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="relative h-64">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=60" alt="职业规划" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+            <div class="p-6 text-white">
+              <h2 class="text-2xl font-bold mb-2">职业规划专题</h2>
+              <p class="text-sm opacity-90">科学规划职业发展路径</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex gap-4">
+              <div class="w-24 h-24 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=60" alt="职业测评" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">职业性格测评</h3>
+                <p class="text-gray-600 text-sm">通过专业测评工具，了解自己的职业倾向和发展方向。</p>
+                <a href="#" class="text-primary text-sm mt-2 inline-block hover:text-primary-dark">立即测评 →</a>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-24 h-24 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800&auto=format&fit=crop&q=60" alt="发展规划" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">职业发展规划</h3>
+                <p class="text-gray-600 text-sm">制定清晰的职业发展路径，实现个人职业目标。</p>
+                <a href="#" class="text-primary text-sm mt-2 inline-block hover:text-primary-dark">查看详情 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 行业洞察专题 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="relative h-64">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60" alt="行业洞察" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+            <div class="p-6 text-white">
+              <h2 class="text-2xl font-bold mb-2">行业洞察专题</h2>
+              <p class="text-sm opacity-90">深度解析行业发展趋势</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex gap-4">
+              <div class="w-24 h-24 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop&q=60" alt="互联网行业" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">互联网行业分析</h3>
+                <p class="text-gray-600 text-sm">解析互联网行业发展趋势，把握就业机会。</p>
+                <a href="#" class="text-primary text-sm mt-2 inline-block hover:text-primary-dark">查看详情 →</a>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-24 h-24 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&auto=format&fit=crop&q=60" alt="新兴行业" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">新兴行业展望</h3>
+                <p class="text-gray-600 text-sm">探索新兴行业发展机遇，寻找职业发展新方向。</p>
+                <a href="#" class="text-primary text-sm mt-2 inline-block hover:text-primary-dark">查看详情 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 求职经验分享 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="relative h-64">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&auto=format&fit=crop&q=60" alt="求职经验" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+            <div class="p-6 text-white">
+              <h2 class="text-2xl font-bold mb-2">求职经验分享</h2>
+              <p class="text-sm opacity-90">优秀毕业生的求职故事</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex gap-4">
+              <div class="w-24 h-24 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=60" alt="成功案例" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">求职成功案例</h3>
+                <p class="text-gray-600 text-sm">分享优秀毕业生的求职经验和心得体会。</p>
+                <a href="#" class="text-primary text-sm mt-2 inline-block hover:text-primary-dark">查看详情 →</a>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-24 h-24 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=800&auto=format&fit=crop&q=60" alt="面试经验" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">面试经验分享</h3>
+                <p class="text-gray-600 text-sm">真实面试经历分享，助你应对各类面试场景。</p>
+                <a href="#" class="text-primary text-sm mt-2 inline-block hover:text-primary-dark">查看详情 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 特色服务 -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold mb-6">特色服务</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 一对一咨询 -->
+        <div class="card p-6">
+          <span class="tag mb-4">热门</span>
+          <h3 class="text-lg font-bold mb-3">一对一咨询</h3>
+          <p class="text-gray-600">预约专业顾问，获取个性化的职业发展建议</p>
+        </div>
+
+        <!-- 模拟面试 -->
+        <div class="card p-6">
+          <span class="tag mb-4">推荐</span>
+          <h3 class="text-lg font-bold mb-3">模拟面试</h3>
+          <p class="text-gray-600">真实企业面试环境模拟，提升面试成功率</p>
+        </div>
+
+        <!-- 简历诊断 -->
+        <div class="card p-6">
+          <span class="tag mb-4">必选</span>
+          <h3 class="text-lg font-bold mb-3">简历诊断</h3>
+          <p class="text-gray-600">资深HR为你的简历把脉，提供专业修改建议</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚组件 -->
+  <footer class="bg-white text-gray-800 py-12 border-t">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-12 gap-8">
+            <!-- 左侧导航菜单 -->
+            <div class="col-span-6 grid grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">关于我们</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">平台介绍</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">联系方式</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">服务协议</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">就业服务</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">校园招聘</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">求职指导</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">政策解读</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">新闻资讯</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">行业动态</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">热点关注</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">活动公告</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">帮助中心</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">常见问题</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">用户指南</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">意见反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 中间联系方式 -->
+            <div class="col-span-2">
+                <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-600 mt-1 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">北京市海淀区中关村大街1号</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone-alt text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">400-123-4567</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">contact@jobinfo.com</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-clock text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">工作日 9:00-18:00</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 右侧二维码 -->
+            <div class="col-span-4">
+                <h3 class="text-lg font-bold mb-4">关注我们</h3>
+                <div class="grid grid-cols-5 gap-3">
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/wechat-qr.png" alt="微信二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">微信公众号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/douyin-qr.png" alt="抖音二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">抖音号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/xiaohongshu-qr.png" alt="小红书二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">小红书号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/kuaishou-qr.png" alt="快手二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">快手号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/weibo-qr.png" alt="微博二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">微博</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 版权信息 -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <div class="text-center text-gray-600 text-sm">
+                <p>© 2024 大学生就业信息平台 All Rights Reserved.</p>
+                <p class="mt-2">京ICP备12345678号-1 | 京公网安备110108020300088号</p>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    // 监听主题变化
+    window.addEventListener('message', function(event) {
+      if (event.data.type === 'themeChange') {
+        const theme = event.data.theme;
+        const root = document.documentElement;
+        const colors = themes[theme];
+        
+        root.style.setProperty('--primary', colors.primary);
+        root.style.setProperty('--primary-dark', colors.primaryDark);
+        root.style.setProperty('--primary-light', colors.primaryLight);
+      }
+    });
+
+    // 页面加载完成后通知父页面
+    window.parent.postMessage({
+      type: 'frameReady'
+    }, '*');
+  </script>
+</body>
+</html> 

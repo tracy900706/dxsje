@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中国大学生就业网</title>
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --primary-light: #93c5fd;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    #mainFrame {
+      flex-grow: 1;
+      width: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- 主框架 -->
+  <iframe id="mainFrame" src="pages/home.html" title="主要内容"></iframe>
+
+  <script>
+    // 主题颜色配置
+    const themes = {
+      blue: {
+        primary: '#3b82f6',
+        primaryDark: '#2563eb',
+        primaryLight: '#93c5fd'
+      },
+      red: {
+        primary: '#ef4444',
+        primaryDark: '#dc2626',
+        primaryLight: '#fca5a5'
+      },
+      orange: {
+        primary: '#f97316',
+        primaryDark: '#ea580c',
+        primaryLight: '#fdba74'
+      },
+      teal: {
+        primary: '#14b8a6',
+        primaryDark: '#0d9488',
+        primaryLight: '#5eead4'
+      }
+    };
+
+    // 当前选中的主题
+    let selectedTheme = localStorage.getItem('selectedTheme') || 'blue';
+
+    // 监听来自子页面的消息
+    window.addEventListener('message', function(event) {
+      if (event.data.type === 'frameReady') {
+        // 子页面准备就绪，发送当前主题
+        const frame = document.getElementById('mainFrame');
+        if (frame && frame.contentWindow) {
+          frame.contentWindow.postMessage({
+            type: 'themeChange',
+            theme: selectedTheme
+          }, '*');
+        }
+      }
+    });
+
+    // 监听链接点击事件，更新iframe src
+    document.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A' && e.target.getAttribute('target') === '_parent') {
+        e.preventDefault();
+        const href = e.target.getAttribute('href');
+        if (href) {
+          document.getElementById('mainFrame').src = 'pages/' + href;
+        }
+      }
+    });
+  </script>
+</body>
+</html> 

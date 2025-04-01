@@ -1,0 +1,21 @@
+{
+  "name": "student-employment-platform",
+  "version": "1.0.0",
+  "description": "大学生就业信息平台高保真原型",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "就业平台",
+    "大学生",
+    "高保真原型",
+    "就业信息"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^3.3.3",
+    "@fortawesome/fontawesome-free": "^6.4.2"
+  }
+} 

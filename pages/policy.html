@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>政策指引 - 中国大学生就业网</title>
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/colors.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <style>
+    :root {
+      --primary: #e41f1f;
+      --primary-dark: #c41a1a;
+      --primary-light: #ff2424;
+    }
+    
+    /* 导航栏当前页面样式 */
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 2px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+    
+    /* 政策卡片样式 */
+    .policy-card {
+      border: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+    
+    .policy-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* 政策图标颜色 */
+    .policy-icon {
+      color: var(--primary);
+    }
+    
+    /* 按钮样式 */
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* 标题装饰线 */
+    .section-title::after {
+      background-color: var(--primary);
+    }
+    
+    /* 链接悬停效果 */
+    .hover-primary:hover {
+      color: var(--primary);
+    }
+    
+    /* 标签样式 */
+    .policy-tag {
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      background-color: rgba(228, 31, 31, 0.1);
+    }
+    
+    /* 搜索框焦点 */
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    /* 政策标题链接 */
+    .policy-title:hover {
+      color: var(--primary);
+    }
+
+    /* 查看详情按钮 */
+    .view-details {
+      color: var(--primary);
+    }
+
+    .view-details:hover {
+      color: var(--primary-dark);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- 导航栏 -->
+  <div class="nav-container bg-white border-b border-gray-200">
+    <div class="nav-content w-full">
+      <div class="container mx-auto max-w-7xl px-4">
+        <nav class="py-4 flex justify-between items-center">
+          <!-- 网站Logo -->
+          <div class="logo-container flex items-center flex-shrink-0 mr-6">
+            <a href="home.html" class="flex items-center">
+              <img src="../assets/images/logo.png" alt="中国大学生就业网Logo" class="h-8 w-auto mr-3">
+              <span class="text-lg font-medium tracking-wide whitespace-nowrap text-gray-900" style="font-family: 'Microsoft YaHei', sans-serif;">中国大学生就业网</span>
+            </a>
+          </div>
+          
+          <!-- 主导航菜单 -->
+          <div class="flex items-center justify-center flex-grow">
+            <div class="flex items-center space-x-6">
+              <a href="home.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                首页
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="news.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                新闻中心
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="policy.html" class="nav-link active text-primary font-medium">政策指引</a>
+              <a href="jobs.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                就业信息
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="service.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                就业指导
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="cooperation.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                战略合作
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="about.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                地方频道
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="contact.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700 hover:text-primary">
+                联系我们
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left"></span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- 右侧工具区 -->
+          <div class="flex items-center space-x-6">
+            <!-- 搜索按钮 -->
+            <button type="button" class="text-gray-700 hover:text-primary transition-colors" aria-label="搜索" title="搜索">
+              <i class="fas fa-search text-lg"></i>
+            </button>
+            
+            <!-- 用户菜单 -->
+            <div class="user-menu relative">
+              <button type="button" class="flex items-center space-x-1 text-gray-700 hover:text-primary focus:outline-none" id="userMenuButton" aria-label="用户菜单" title="用户菜单">
+                <span class="text-sm">我的账户</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              
+              <!-- 用户下拉菜单 -->
+              <div class="user-dropdown absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden" id="userDropdown">
+                <a href="javascript:void(0);" onclick="return false;" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" style="cursor: default;">
+                  <i class="fas fa-user mr-2"></i>个人中心
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bookmark mr-2"></i>我的收藏
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bell mr-2"></i>消息通知
+                </a>
+                <div class="border-t border-gray-100 my-1"></div>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-sign-out-alt mr-2"></i>退出登录
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主要内容区 -->
+  <div class="content-wrapper container mx-auto px-4 py-8">
+    <!-- 页面标题 -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900">政策指引</h1>
+      <p class="mt-2 text-gray-600">了解最新的就业政策和指导方针</p>
+    </div>
+
+    <!-- 政策分类列表 -->
+    <div class="grid grid-cols-1 gap-8">
+      <!-- 国家政策 -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-landmark text-primary text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-900">国家政策</h2>
+        </div>
+        <div class="space-y-6">
+          <!-- 政策列表 -->
+          <div class="grid grid-cols-1 gap-6">
+            <!-- 政策项目 -->
+            <div class="border border-gray-200 rounded-lg p-6 hover:border-primary transition-colors">
+              <div class="flex gap-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?w=800&auto=format&fit=crop&q=60" alt="2024年全国高校毕业生就业创业政策" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">2024年全国高校毕业生就业创业政策</h3>
+                    <span class="bg-red-50 text-primary text-sm px-2 py-1 rounded">重要政策</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i>2024-01-15</span>
+                    <span><i class="far fa-eye mr-1"></i>1234次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">为深入贯彻落实党中央、国务院关于促进高校毕业生就业创业的决策部署，进一步完善高校毕业生就业创业支持体系，提升就业创业服务质量，特制定本政策。主要包括创业补贴、社保补贴、培训补贴等多项支持措施。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-file-pdf text-red-500 mr-1"></i>PDF文档</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-video text-blue-500 mr-1"></i>解读视频</span>
+                    </div>
+                    <a href="#" class="text-primary hover:text-primary-dark">查看详情 <i class="fas fa-chevron-right ml-1"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第二个政策项目 -->
+            <div class="border border-gray-200 rounded-lg p-6 hover:border-primary transition-colors">
+              <div class="flex gap-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=60" alt="国务院关于进一步做好高校毕业生就业工作的通知" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">国务院关于进一步做好高校毕业生就业工作的通知</h3>
+                    <span class="bg-red-50 text-primary text-sm px-2 py-1 rounded">重要政策</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i>2024-01-10</span>
+                    <span><i class="far fa-eye mr-1"></i>986次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">为贯彻落实党中央、国务院决策部署，切实做好高校毕业生就业工作，进一步完善就业支持体系，优化就业服务，拓宽就业渠道，提升就业质量，现就有关工作通知如下。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-file-word text-blue-500 mr-1"></i>政策原文</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-image text-green-500 mr-1"></i>图解政策</span>
+                    </div>
+                    <a href="#" class="text-primary hover:text-primary-dark">查看详情 <i class="fas fa-chevron-right ml-1"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 行业政策 -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-industry text-primary text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-900">行业政策</h2>
+        </div>
+        <div class="space-y-6">
+          <!-- 政策列表 -->
+          <div class="grid grid-cols-1 gap-6">
+            <!-- 政策项目 -->
+            <div class="border border-gray-200 rounded-lg p-6 hover:border-primary transition-colors">
+              <div class="flex gap-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop&q=60" alt="IT行业人才引进政策解读" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">IT行业人才引进政策解读</h3>
+                    <span class="bg-blue-50 text-blue-600 text-sm px-2 py-1 rounded">行业导向</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i>2024-01-12</span>
+                    <span><i class="far fa-eye mr-1"></i>876次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">针对IT行业快速发展的需求，各地政府相继出台人才引进政策，包括住房补贴、科研经费支持、子女教育等多方面优惠政策，以吸引和留住高素质IT人才。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-file-powerpoint text-orange-500 mr-1"></i>政策解读</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-chart-bar text-purple-500 mr-1"></i>数据分析</span>
+                    </div>
+                    <a href="#" class="text-primary hover:text-primary-dark">查看详情 <i class="fas fa-chevron-right ml-1"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第二个政策项目 -->
+            <div class="border border-gray-200 rounded-lg p-6 hover:border-primary transition-colors">
+              <div class="flex gap-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&auto=format&fit=crop&q=60" alt="新能源行业人才发展规划" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">新能源行业人才发展规划</h3>
+                    <span class="bg-blue-50 text-blue-600 text-sm px-2 py-1 rounded">行业导向</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i>2024-01-08</span>
+                    <span><i class="far fa-eye mr-1"></i>654次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">为推动新能源产业高质量发展，加快培养和引进新能源领域高层次人才，制定本规划。重点支持光伏、风电、氢能等领域的人才培养和技术创新。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-file-pdf text-red-500 mr-1"></i>规划文件</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-video text-blue-500 mr-1"></i>专家解读</span>
+                    </div>
+                    <a href="#" class="text-primary hover:text-primary-dark">查看详情 <i class="fas fa-chevron-right ml-1"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 企业政策 -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-building text-primary text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-900">企业政策</h2>
+        </div>
+        <div class="space-y-6">
+          <!-- 政策列表 -->
+          <div class="grid grid-cols-1 gap-6">
+            <!-- 政策项目 -->
+            <div class="border border-gray-200 rounded-lg p-6 hover:border-primary transition-colors">
+              <div class="flex gap-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=800&auto=format&fit=crop&q=60" alt="企业人才储备计划政策" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">企业人才储备计划政策</h3>
+                    <span class="bg-green-50 text-green-600 text-sm px-2 py-1 rounded">企业政策</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i>2024-01-05</span>
+                    <span><i class="far fa-eye mr-1"></i>543次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">为支持企业提前储备优秀人才，建立人才梯队，特制定本计划。包括实习生招募、管培生项目、专项培训等多个方面，助力企业打造可持续发展的人才体系。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-file-alt text-gray-500 mr-1"></i>计划详情</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-chart-line text-green-500 mr-1"></i>实施效果</span>
+                    </div>
+                    <a href="#" class="text-primary hover:text-primary-dark">查看详情 <i class="fas fa-chevron-right ml-1"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第二个政策项目 -->
+            <div class="border border-gray-200 rounded-lg p-6 hover:border-primary transition-colors">
+              <div class="flex gap-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=60" alt="企业校园招聘补贴政策" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">企业校园招聘补贴政策</h3>
+                    <span class="bg-green-50 text-green-600 text-sm px-2 py-1 rounded">企业政策</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i>2024-01-03</span>
+                    <span><i class="far fa-eye mr-1"></i>432次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">为鼓励企业积极参与校园招聘，扩大就业岗位供给，特制定本补贴政策。对参与校园招聘会的企业，根据招聘规模和录用人数给予相应补贴支持。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-calculator text-blue-500 mr-1"></i>补贴标准</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-file-signature text-purple-500 mr-1"></i>申请指南</span>
+                    </div>
+                    <a href="#" class="text-primary hover:text-primary-dark">查看详情 <i class="fas fa-chevron-right ml-1"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 内部政策 -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-file-alt text-primary text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-900">内部政策</h2>
+        </div>
+        <div class="space-y-6">
+          <!-- 政策列表 -->
+          <div class="grid grid-cols-1 gap-6">
+            <!-- 政策项目 -->
+            <div class="border border-gray-200 rounded-lg p-6 hover:border-primary transition-colors">
+              <div class="flex gap-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?w=800&auto=format&fit=crop&q=60" alt="平台用户服务协议更新" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">平台用户服务协议更新</h3>
+                    <span class="bg-purple-50 text-purple-600 text-sm px-2 py-1 rounded">内部政策</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i>2024-01-02</span>
+                    <span><i class="far fa-eye mr-1"></i>321次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">为更好地保护用户权益，规范平台运营，我们对用户服务协议进行了更新。主要涉及个人信息保护、账号安全、服务规范等方面的内容调整。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-file-contract text-yellow-500 mr-1"></i>协议全文</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-list-ul text-blue-500 mr-1"></i>更新说明</span>
+                    </div>
+                    <a href="#" class="text-primary hover:text-primary-dark">查看详情 <i class="fas fa-chevron-right ml-1"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第二个政策项目 -->
+            <div class="border border-gray-200 rounded-lg p-6 hover:border-primary transition-colors">
+              <div class="flex gap-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?w=800&auto=format&fit=crop&q=60" alt="平台招聘信息发布规范" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">平台招聘信息发布规范</h3>
+                    <span class="bg-purple-50 text-purple-600 text-sm px-2 py-1 rounded">内部政策</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i>2024-01-01</span>
+                    <span><i class="far fa-eye mr-1"></i>234次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">为维护良好的招聘环境，确保信息真实有效，特制定本规范。明确了招聘信息发布的基本要求、审核标准、违规处理等内容，请各用人单位严格遵守。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-clipboard-list text-indigo-500 mr-1"></i>发布指南</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-exclamation-circle text-red-500 mr-1"></i>注意事项</span>
+                    </div>
+                    <a href="#" class="text-primary hover:text-primary-dark">查看详情 <i class="fas fa-chevron-right ml-1"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚组件 -->
+  <footer class="bg-white text-gray-800 py-12 border-t">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-12 gap-8">
+            <!-- 左侧导航菜单 -->
+            <div class="col-span-6 grid grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">关于我们</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">平台介绍</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">联系方式</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">服务协议</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">就业服务</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">校园招聘</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">求职指导</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">政策解读</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">新闻资讯</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">行业动态</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">热点关注</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">活动公告</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">帮助中心</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">常见问题</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">用户指南</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">意见反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 中间联系方式 -->
+            <div class="col-span-2">
+                <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-600 mt-1 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">北京市海淀区中关村大街1号</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone-alt text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">400-123-4567</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">contact@jobinfo.com</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-clock text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">工作日 9:00-18:00</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 右侧二维码 -->
+            <div class="col-span-4">
+                <h3 class="text-lg font-bold mb-4">关注我们</h3>
+                <div class="grid grid-cols-5 gap-3">
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/wechat-qr.png" alt="微信二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">微信公众号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/douyin-qr.png" alt="抖音二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">抖音号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/xiaohongshu-qr.png" alt="小红书二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">小红书号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/kuaishou-qr.png" alt="快手二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">快手号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/weibo-qr.png" alt="微博二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">微博</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 版权信息 -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <div class="text-center text-gray-600 text-sm">
+                <p>© 2024 大学生就业信息平台 All Rights Reserved.</p>
+                <p class="mt-2">京ICP备12345678号-1 | 京公网安备110108020300088号</p>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    // 监听主题变化
+    window.addEventListener('message', function(event) {
+      if (event.data.type === 'themeChange') {
+        const theme = event.data.theme;
+        const root = document.documentElement;
+        const colors = themes[theme];
+        
+        root.style.setProperty('--primary', colors.primary);
+        root.style.setProperty('--primary-dark', colors.primaryDark);
+        root.style.setProperty('--primary-light', colors.primaryLight);
+      }
+    });
+
+    // 页面加载完成后通知父页面
+    window.parent.postMessage({
+      type: 'frameReady'
+    }, '*');
+  </script>
+</body>
+</html> 

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就业信息 - 中国大学生就业网</title>
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #e41f1f;
+      --primary-dark: #c41a1a;
+      --primary-light: #ff2424;
+    }
+
+    /* 导航栏样式 */
+    .nav-link.active {
+      color: var(--primary) !important;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: var(--primary) !important;
+    }
+
+    /* 状态标签样式 */
+    .status-tag.ongoing {
+      color: #2563eb;
+      background-color: #dbeafe;
+    }
+
+    .status-tag.upcoming {
+      color: #059669;
+      background-color: #d1fae5;
+    }
+
+    /* 卡片样式 */
+    .job-card {
+      border: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    .job-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transform: translateY(-2px);
+    }
+
+    /* 图标样式 */
+    .icon-primary {
+      color: var(--primary);
+    }
+
+    /* 链接样式 */
+    .link-primary {
+      color: var(--primary);
+      transition: color 0.2s ease;
+    }
+
+    .link-primary:hover {
+      color: var(--primary-dark);
+    }
+
+    /* 查看详情按钮 */
+    .details-link {
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .details-link:hover {
+      color: var(--primary-dark);
+      transform: translateX(4px);
+    }
+
+    .details-link i {
+      margin-left: 4px;
+      font-size: 12px;
+    }
+
+    /* 浏览量图标 */
+    .view-count i {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- 导航栏 -->
+  <div class="nav-container bg-white border-b border-gray-200">
+    <div class="nav-content w-full">
+      <div class="container mx-auto max-w-7xl px-4">
+        <nav class="py-4 flex justify-between items-center">
+          <!-- 网站Logo -->
+          <div class="logo-container flex items-center flex-shrink-0 mr-6">
+            <a href="home.html" class="flex items-center">
+              <img src="../assets/images/logo.png" alt="中国大学生就业网Logo" class="h-8 w-auto mr-3">
+              <span class="text-lg font-medium tracking-wide whitespace-nowrap text-gray-900" style="font-family: 'Microsoft YaHei', sans-serif;">中国大学生就业网</span>
+            </a>
+          </div>
+          
+          <!-- 主导航菜单 -->
+          <div class="flex items-center justify-center flex-grow">
+            <div class="flex items-center space-x-6">
+              <a href="home.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700">首页</a>
+              <a href="news.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700">新闻中心</a>
+              <a href="policy.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700">政策指引</a>
+              <a href="jobs.html" class="nav-link active">就业信息</a>
+              <a href="service.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700">就业指导</a>
+              <a href="cooperation.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700">战略合作</a>
+              <a href="about.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700">地方频道</a>
+              <a href="contact.html" class="nav-link relative whitespace-nowrap px-1 text-sm text-gray-700">联系我们</a>
+            </div>
+          </div>
+          
+          <!-- 右侧工具区 -->
+          <div class="flex items-center space-x-6">
+            <!-- 搜索按钮 -->
+            <button type="button" class="text-gray-700 hover:text-primary transition-colors" aria-label="搜索" title="搜索">
+              <i class="fas fa-search text-lg"></i>
+            </button>
+            
+            <!-- 用户菜单 -->
+            <div class="user-menu relative">
+              <button type="button" class="flex items-center space-x-1 text-gray-700 hover:text-primary focus:outline-none" id="userMenuButton" aria-label="用户菜单" title="用户菜单">
+                <span class="text-sm">我的账户</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              
+              <!-- 用户下拉菜单 -->
+              <div class="user-dropdown absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden" id="userDropdown">
+                <a href="javascript:void(0);" onclick="return false;" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" style="cursor: default;">
+                  <i class="fas fa-user mr-2"></i>个人中心
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bookmark mr-2"></i>我的收藏
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-bell mr-2"></i>消息通知
+                </a>
+                <div class="border-t border-gray-100 my-1"></div>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-sign-out-alt mr-2"></i>退出登录
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主要内容区 -->
+  <div class="content-wrapper container mx-auto px-4 py-8">
+    <!-- 页面标题 -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900">就业信息</h1>
+      <p class="mt-2 text-gray-600">浏览最新的就业机会和相关信息</p>
+    </div>
+
+    <!-- 信息分类列表 -->
+    <div class="grid grid-cols-1 gap-8">
+      <!-- 校园招聘 -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-graduation-cap icon-primary text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-900">校园招聘</h2>
+        </div>
+        <div class="space-y-6">
+          <!-- 信息列表 -->
+          <div class="grid grid-cols-1 gap-6">
+            <!-- 信息项目 -->
+            <div class="job-card rounded-lg">
+              <div class="flex gap-6 p-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=60" alt="2024春季校园招聘会" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">2024春季校园招聘会</h3>
+                    <span class="status-tag ongoing px-3 py-1 rounded-full text-sm">正在进行</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt icon-primary mr-1"></i>2024-03-15</span>
+                    <span class="mr-4"><i class="far fa-building icon-primary mr-1"></i>500+知名企业</span>
+                    <span class="view-count"><i class="far fa-eye mr-1"></i>2345次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">2024年春季校园招聘会将于3月15日在北京、上海、广州等多个城市同时举办。本次招聘会汇集互联网、金融、制造业等多个行业的500余家知名企业，提供超过10000个就业岗位。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt icon-primary mr-1"></i>多城市</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-users icon-primary mr-1"></i>10000+岗位</span>
+                    </div>
+                    <a href="#" class="details-link">查看详情 <i class="fas fa-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第二个信息项目 -->
+            <div class="job-card rounded-lg">
+              <div class="flex gap-6 p-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=60" alt="互联网企业专场招聘会" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">互联网企业专场招聘会</h3>
+                    <span class="status-tag upcoming px-3 py-1 rounded-full text-sm">即将开始</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt icon-primary mr-1"></i>2024-03-20</span>
+                    <span class="mr-4"><i class="far fa-building icon-primary mr-1"></i>50+互联网企业</span>
+                    <span class="view-count"><i class="far fa-eye mr-1"></i>1876次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">互联网企业专场招聘会将汇集BAT等知名互联网企业，涵盖技术研发、产品运营、市场营销等多个岗位方向。现场将提供简历指导、模拟面试等特色服务。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt icon-primary mr-1"></i>北京</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-laptop-code icon-primary mr-1"></i>技术岗位为主</span>
+                    </div>
+                    <a href="#" class="details-link">查看详情 <i class="fas fa-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 社会招聘 -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-briefcase icon-primary text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-900">社会招聘</h2>
+        </div>
+        <div class="space-y-6">
+          <!-- 信息列表 -->
+          <div class="grid grid-cols-1 gap-6">
+            <!-- 信息项目 -->
+            <div class="job-card rounded-lg">
+              <div class="flex gap-6 p-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop&q=60" alt="金融行业人才专场" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">金融行业人才专场</h3>
+                    <span class="status-tag ongoing px-3 py-1 rounded-full text-sm">正在进行</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt icon-primary mr-1"></i>2024-03-18</span>
+                    <span class="mr-4"><i class="far fa-building icon-primary mr-1"></i>30+金融机构</span>
+                    <span class="view-count"><i class="far fa-eye mr-1"></i>1543次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">面向具有1-5年工作经验的金融行业专业人才，包括投资银行、资产管理、风险控制等岗位。知名券商、基金公司、银行等金融机构现场招聘。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt icon-primary mr-1"></i>上海</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-money-bill-wave icon-primary mr-1"></i>金融岗位</span>
+                    </div>
+                    <a href="#" class="details-link">查看详情 <i class="fas fa-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第二个信息项目 -->
+            <div class="job-card rounded-lg">
+              <div class="flex gap-6 p-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop&q=60" alt="制造业高端人才招聘" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">制造业高端人才招聘</h3>
+                    <span class="status-tag upcoming px-3 py-1 rounded-full text-sm">即将开始</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt icon-primary mr-1"></i>2024-03-25</span>
+                    <span class="mr-4"><i class="far fa-building icon-primary mr-1"></i>40+制造企业</span>
+                    <span class="view-count"><i class="far fa-eye mr-1"></i>1234次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">面向制造业高级工程师、技术主管、项目经理等岗位的专场招聘会。包括新能源汽车、智能制造、航空航天等领域的优质企业，提供具有竞争力的薪资待遇。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt icon-primary mr-1"></i>深圳</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-industry icon-primary mr-1"></i>制造业</span>
+                    </div>
+                    <a href="#" class="details-link">查看详情 <i class="fas fa-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 实习就业 -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-user-graduate icon-primary text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-900">实习就业</h2>
+        </div>
+        <div class="space-y-6">
+          <!-- 信息列表 -->
+          <div class="grid grid-cols-1 gap-6">
+            <!-- 信息项目 -->
+            <div class="job-card rounded-lg">
+              <div class="flex gap-6 p-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=60" alt="暑期实习生招募计划" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">暑期实习生招募计划</h3>
+                    <span class="status-tag ongoing px-3 py-1 rounded-full text-sm">正在进行</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt icon-primary mr-1"></i>2024-03-01 至 04-30</span>
+                    <span class="mr-4"><i class="far fa-building icon-primary mr-1"></i>200+企业</span>
+                    <span class="view-count"><i class="far fa-eye mr-1"></i>3456次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">2024年暑期实习生招募计划现已启动，面向在校大学生提供实习机会。涵盖互联网、金融、咨询等多个行业，可获得带薪实习和转正机会。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-clock icon-primary mr-1"></i>2-3个月</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-yuan-sign icon-primary mr-1"></i>带薪实习</span>
+                    </div>
+                    <a href="#" class="details-link">查看详情 <i class="fas fa-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第二个信息项目 -->
+            <div class="job-card rounded-lg">
+              <div class="flex gap-6 p-6">
+                <!-- 左侧图片 -->
+                <div class="w-64 h-48 flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&auto=format&fit=crop&q=60" alt="应届生管培生项目" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- 右侧内容 -->
+                <div class="flex-grow">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold text-gray-900">应届生管培生项目</h3>
+                    <span class="status-tag upcoming px-3 py-1 rounded-full text-sm">即将开始</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="mr-4"><i class="far fa-calendar-alt icon-primary mr-1"></i>2024-04-01 开始</span>
+                    <span class="mr-4"><i class="far fa-building icon-primary mr-1"></i>100+知名企业</span>
+                    <span class="view-count"><i class="far fa-eye mr-1"></i>2789次浏览</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-3">2024年应届生管理培训生项目，为优秀应届毕业生提供快速晋升通道。项目包含轮岗实习、导师指导、培训课程等，帮助你快速成长为未来管理者。</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <span class="text-sm text-gray-500"><i class="fas fa-user-tie icon-primary mr-1"></i>管理培训生</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-chart-line icon-primary mr-1"></i>快速晋升</span>
+                    </div>
+                    <a href="#" class="details-link">查看详情 <i class="fas fa-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚组件 -->
+  <footer class="bg-white text-gray-800 py-12 border-t">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-12 gap-8">
+            <!-- 左侧导航菜单 -->
+            <div class="col-span-6 grid grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">关于我们</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">平台介绍</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">联系方式</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">服务协议</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">就业服务</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">校园招聘</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">求职指导</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">政策解读</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">新闻资讯</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">行业动态</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">热点关注</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">活动公告</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">帮助中心</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">常见问题</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">用户指南</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">意见反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 中间联系方式 -->
+            <div class="col-span-2">
+                <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-600 mt-1 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">北京市海淀区中关村大街1号</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone-alt text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">400-123-4567</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">contact@jobinfo.com</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-clock text-gray-600 mr-2 text-xs"></i>
+                        <span class="text-gray-600 text-xs">工作日 9:00-18:00</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 右侧二维码 -->
+            <div class="col-span-4">
+                <h3 class="text-lg font-bold mb-4">关注我们</h3>
+                <div class="grid grid-cols-5 gap-3">
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/wechat-qr.png" alt="微信二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">微信公众号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/douyin-qr.png" alt="抖音二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">抖音号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/xiaohongshu-qr.png" alt="小红书二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">小红书号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/kuaishou-qr.png" alt="快手二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">快手号</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../assets/images/qrcode/weibo-qr.png" alt="微博二维码" class="w-[80px] h-[80px] mx-auto mb-1 rounded-lg shadow-sm object-cover">
+                        <p class="text-xs text-gray-600">微博</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 版权信息 -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <div class="text-center text-gray-600 text-sm">
+                <p>© 2024 大学生就业信息平台 All Rights Reserved.</p>
+                <p class="mt-2">京ICP备12345678号-1 | 京公网安备110108020300088号</p>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    // 监听主题变化
+    window.addEventListener('message', function(event) {
+      if (event.data.type === 'themeChange') {
+        const theme = event.data.theme;
+        const root = document.documentElement;
+        const colors = themes[theme];
+        
+        root.style.setProperty('--primary', colors.primary);
+        root.style.setProperty('--primary-dark', colors.primaryDark);
+        root.style.setProperty('--primary-light', colors.primaryLight);
+      }
+    });
+
+    // 页面加载完成后通知父页面
+    window.parent.postMessage({
+      type: 'frameReady'
+    }, '*');
+  </script>
+</body>
+</html> 
