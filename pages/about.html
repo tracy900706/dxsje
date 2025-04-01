@@ -19,16 +19,18 @@
     }
     
     /* 导航栏当前页面样式 */
-    .nav-link.active::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 24px;
-      height: 2px;
-      background-color: var(--primary);
-      border-radius: 2px;
+    .nav-link.active {
+      color: var(--primary) !important;
+      font-weight: 500;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link span {
+      display: none;
     }
     
     /* 关于我们卡片样式 */
