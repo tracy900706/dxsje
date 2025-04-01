@@ -18,17 +18,23 @@
       --primary-light: #ff2424;
     }
     
-    /* 导航栏当前页面样式 */
+    /* 导航栏样式 */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+      color: #4B5563;  /* text-gray-700 */
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
     .nav-link.active {
       color: var(--primary) !important;
       font-weight: 500;
     }
 
-    .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
+    /* 移除所有导航下划线动画 */
     .nav-link span {
       display: none;
     }
