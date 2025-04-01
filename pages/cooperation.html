@@ -18,23 +18,23 @@
     }
     
     /* 导航栏样式 */
-    .nav-link {
+    .nav-container .nav-link {
       position: relative;
       transition: color 0.3s ease;
-      color: #4B5563;  /* text-gray-700 */
+      color: #4B5563 !important;  /* text-gray-700 */
     }
 
-    .nav-link:hover {
-      color: var(--primary);
+    .nav-container .nav-link:hover {
+      color: var(--primary) !important;
     }
 
-    .nav-link.active {
+    .nav-container .nav-link.active {
       color: var(--primary) !important;
       font-weight: 500;
     }
 
     /* 移除所有导航下划线动画 */
-    .nav-link span {
+    .nav-container .nav-link span {
       display: none;
     }
     
